@@ -2,7 +2,7 @@ name: Daily Questions Bot
 
 on:
   schedule:
-    - cron: '*/1 * * * *'  # Uruchamia skrypt co minutę
+    - cron: '*/5 * * * *'
 
 jobs:
   run_bot:
