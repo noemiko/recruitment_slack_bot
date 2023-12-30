@@ -1,9 +1,11 @@
 name: Random Message to Slack
 
-
 on:
-  schedule:
-    - cron: '*/5 * * * *'
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'Custom message'
+        required: false
 
 jobs:
   random_message_to_slack:
