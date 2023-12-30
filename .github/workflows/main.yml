@@ -23,4 +23,7 @@ jobs:
           pip install slack_sdk schedule load_dotenv
 
       - name: Run script
+        env:
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          CHANEL_ID: ${{ secrets.CHANEL_ID }}
         run: python daily_questions_bot.py
