@@ -1,0 +1,60 @@
+name: Random Message to Slack
+
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  random_message_to_slack:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10' 
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install slack_sdk
+
+      - name: Run script
+        run: |
+          python - <<EOF
+import os
+import random
+from slack_sdk import WebClient
+
+# List of messages
+messages = [
+    "Hello, World!",
+    "GitHub Actions are awesome!",
+    "Have a great day!",
+    "Coding is fun!",
+]
+
+# Select a random message
+random_message = random.choice(messages)
+
+# Slack token (set as a secret in GitHub)
+slack_token = os.getenv('SLACK_TOKEN')
+
+# Slack channel ID
+channel_id = os.getenv('CHANNEL_ID') # Replace with your Slack channel ID
+
+# Initialize Slack client
+slack_client = WebClient(token=slack_token)
+
+# Send the message to Slack
+response = slack_client.chat_postMessage(
+    channel=channel_id,
+    text=f"Random Message: {random_message}"
+)
+
+print(response)
+EOF
