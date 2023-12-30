@@ -29,35 +29,35 @@ jobs:
           CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
         run: |
           python - <<EOF
-import os
-import random
-from slack_sdk import WebClient
+          import os
+          import random
+          from slack_sdk import WebClient
+          
+          # List of messages
+          messages = [
+              "Hello, World!",
+              "GitHub Actions are awesome!",
+              "Have a great day!",
+              "Coding is fun!",
+          ]
+          
+          # Select a random message
+          random_message = random.choice(messages)
 
-# List of messages
-messages = [
-    "Hello, World!",
-    "GitHub Actions are awesome!",
-    "Have a great day!",
-    "Coding is fun!",
-]
+          # Slack token (set as a secret in GitHub)
+          slack_token = os.getenv('SLACK_TOKEN')
+          
+          # Slack channel ID
+          channel_id = os.getenv('CHANNEL_ID') # Replace with your Slack channel ID
+          
+          # Initialize Slack client
+          slack_client = WebClient(token=slack_token)
 
-# Select a random message
-random_message = random.choice(messages)
-
-# Slack token (set as a secret in GitHub)
-slack_token = os.getenv('SLACK_TOKEN')
-
-# Slack channel ID
-channel_id = os.getenv('CHANNEL_ID') # Replace with your Slack channel ID
-
-# Initialize Slack client
-slack_client = WebClient(token=slack_token)
-
-# Send the message to Slack
-response = slack_client.chat_postMessage(
-    channel=channel_id,
-    text=f"Random Message: {random_message}"
-)
-
-print(response)
-EOF
+          # Send the message to Slack
+          response = slack_client.chat_postMessage(
+              channel=channel_id,
+              text=f"Random Message: {random_message}"
+          )
+          
+          print(response)
+          EOF
