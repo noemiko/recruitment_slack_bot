@@ -24,6 +24,9 @@ jobs:
           pip install slack_sdk
 
       - name: Run script
+        env:
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
         run: |
           python - <<EOF
 import os
