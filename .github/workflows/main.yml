@@ -25,5 +25,5 @@ jobs:
       - name: Run script
         env:
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
-          CHANEL_ID: ${{ secrets.CHANEL_ID }}
+          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
         run: python daily_questions_bot.py
