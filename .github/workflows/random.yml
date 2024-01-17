@@ -31,8 +31,8 @@ jobs:
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
           CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
         run: |
-          echo $SLACK_TOKEN
-          echo $CHANNEL_ID
+          echo $SLACK_TOKEN | sed 's/ //g'
+          echo $CHANNEL_ID | sed 's/ //g'
 
           python - <<EOF
           import os
