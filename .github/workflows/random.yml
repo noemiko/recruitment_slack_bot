@@ -31,6 +31,9 @@ jobs:
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
           CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
         run: |
+          echo $SLACK_TOKEN
+          echo $CHANNEL_ID
+
           python - <<EOF
           import os
           import random
@@ -53,7 +56,7 @@ jobs:
           # Slack token (set as a secret in GitHub)
           slack_token = os.environ.get('SLACK_TOKEN')
           # Slack channel ID
-          channel_id = os.environ.get('CHANNEL_ID') # Replace with your Slack channel ID
+          channel_id = os.environ.get('CHANNEL_ID')
           print(channel_id)
 
           # Initialize Slack client
