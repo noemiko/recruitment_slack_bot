@@ -51,11 +51,11 @@ jobs:
           random_message = random.choice(messages)
 
           # Slack token (set as a secret in GitHub)
-          slack_token = os.getenv('SLACK_TOKEN')
-          print(channel_id)
+          slack_token = os.environ.get('SLACK_TOKEN')
           # Slack channel ID
-          channel_id = os.getenv('CHANNEL_ID') # Replace with your Slack channel ID
-          
+          channel_id = os.environ.get('CHANNEL_ID') # Replace with your Slack channel ID
+          print(channel_id)
+
           # Initialize Slack client
           slack_client = WebClient(token=slack_token)
 
