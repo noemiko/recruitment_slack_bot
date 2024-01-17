@@ -1,8 +1,9 @@
 name: Daily Questions Bot
 
 on:
+  workflow_dispatch:  # Triggered manually (on click)
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '0 8 * * *'  # Daily schedule at 8:00 UTC
 
 jobs:
   run_bot:
