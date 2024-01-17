@@ -52,7 +52,7 @@ jobs:
 
           # Slack token (set as a secret in GitHub)
           slack_token = os.getenv('SLACK_TOKEN')
-          
+          print(channel_id)
           # Slack channel ID
           channel_id = os.getenv('CHANNEL_ID') # Replace with your Slack channel ID
           
